@@ -60,13 +60,30 @@
     @media print{.back-to-top,.skip-link,nav.toc{display:none!important}.section-content[hidden]{display:block!important;opacity:1!important;max-height:none!important;padding:0!important}.section-toggle{background:transparent;border:none;padding:0}header.hero{margin-bottom:12px;border-bottom:1px solid #000}body{padding:8px}}
     @media (prefers-reduced-motion:reduce){html:focus-within{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
   </style>
+  <style id="bg-override">
+    /* Restore original subtle background */
+    body::before {
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 86px, rgba(0, 0, 0, 0.015) 86px, rgba(0, 0, 0, 0.015) 87px),
+        repeating-linear-gradient(60deg, transparent, transparent 86px, rgba(0, 0, 0, 0.015) 86px, rgba(0, 0, 0, 0.015) 87px),
+        repeating-linear-gradient(120deg, transparent, transparent 86px, rgba(0, 0, 0, 0.015) 86px, rgba(0, 0, 0, 0.015) 87px);
+      background-size: 100px 173px;
+    }
+    body::after {
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(0, 0, 0, 0.01) 0%, transparent 3%),
+        radial-gradient(circle at 85% 15%, rgba(0, 0, 0, 0.01) 0%, transparent 2.5%),
+        radial-gradient(circle at 45% 80%, rgba(0, 0, 0, 0.01) 0%, transparent 3.5%),
+        radial-gradient(circle at 75% 60%, rgba(0, 0, 0, 0.01) 0%, transparent 2%),
+        radial-gradient(circle at 25% 50%, rgba(0, 0, 0, 0.01) 0%, transparent 2.8%);
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="container">
     <header class="hero" role="banner">
       <h1>Breaking Into Tech: My Career Entry Strategy</h1>
-      <p>Angel Antonio Contreras‑Reyes · Managing IT Projects · Fall 2025</p>
     </header>
 
     <section class="student-info" aria-labelledby="student-heading">
@@ -222,6 +239,27 @@
     document.querySelector('.back-to-top')?.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+  </script>
+  <script>
+    // Override to make sections collapsible (toggle open/closed)
+    (function(){
+      function toggle(evt){
+        const btn = evt.currentTarget;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        if (typeof setExpanded === 'function') {
+          setExpanded(btn, !expanded);
+        }
+      }
+      // Remove previous expand-only listeners by cloning nodes, then attach toggle listeners
+      document.querySelectorAll('.section-toggle').forEach((btn)=>{
+        const clone = btn.cloneNode(true);
+        btn.replaceWith(clone);
+        clone.addEventListener('click', toggle);
+        clone.addEventListener('keydown', (e)=>{
+          if(e.key==='Enter' || e.key===' '){ e.preventDefault(); clone.click(); }
+        });
+      });
+    })();
   </script>
 </body>
 </html>
