@@ -1,610 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Goal - Project Charter</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background: #ffffff;
-            color: #1a1a1a;
-            line-height: 1.8;
-            padding: 40px 20px;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .header {
-            text-align: center;
-            padding: 60px 20px;
-            border-bottom: 3px solid #1a1a1a;
-            margin-bottom: 50px;
-        }
-        
-        .header h1 {
-            font-size: 48px;
-            font-weight: 400;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            color: #1a1a1a;
-        }
-        
-        .header p {
-            font-size: 16px;
-            color: #666;
-            font-style: italic;
-        }
-        
-        .student-info {
-            background: #f8f8f8;
-            padding: 30px;
-            margin-bottom: 50px;
-            border-left: 4px solid #1a1a1a;
-        }
-        
-        .student-info h3 {
-            font-size: 20px;
-            font-weight: 400;
-            margin-bottom: 20px;
-            color: #1a1a1a;
-        }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .info-item {
-            padding: 15px 0;
-        }
-        
-        .info-label {
-            font-weight: 700;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-        
-        .info-value {
-            font-size: 16px;
-            color: #1a1a1a;
-        }
-        
-        .toc {
-            background: #f8f8f8;
-            padding: 40px;
-            margin-bottom: 50px;
-            border: 2px solid #1a1a1a;
-        }
-        
-        .toc h2 {
-            font-size: 24px;
-            font-weight: 400;
-            margin-bottom: 25px;
-            color: #1a1a1a;
-        }
-        
-        .toc ol {
-            list-style-position: inside;
-            font-size: 16px;
-        }
-        
-        .toc li {
-            margin: 12px 0;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .toc li:hover {
-            margin-left: 10px;
-            font-weight: 700;
-        }
-        
-        .toc a {
-            color: #1a1a1a;
-            text-decoration: none;
-        }
-        
-        .toc a:hover {
-            text-decoration: underline;
-        }
-        
-        .section {
-            margin-bottom: 60px;
-            padding: 40px 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .section:last-child {
-            border-bottom: none;
-        }
-        
-        .section-header {
-            margin-bottom: 30px;
-        }
-        
-        .section-title {
-            font-size: 28px;
-            font-weight: 400;
-            color: #1a1a1a;
-            margin-bottom: 10px;
-        }
-        
-        .section-content {
-            font-size: 16px;
-            color: #333;
-        }
-        
-        .section-content h3,
-        .section-content h4 {
-            font-weight: 400;
-            margin: 25px 0 15px 0;
-            color: #1a1a1a;
-        }
-        
-        .section-content h3 {
-            font-size: 22px;
-        }
-        
-        .section-content h4 {
-            font-size: 18px;
-        }
-        
-        .section-content p {
-            margin: 15px 0;
-            text-align: justify;
-        }
-        
-        .section-content ul {
-            margin: 20px 0 20px 40px;
-            list-style-type: disc;
-        }
-        
-        .section-content li {
-            margin: 10px 0;
-        }
-        
-        .instructions {
-            background: #f0f0f0;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 3px solid #666;
-            font-size: 14px;
-            font-style: italic;
-        }
-        
-        .instructions strong {
-            font-style: normal;
-            display: block;
-            margin-bottom: 10px;
-        }
-        
-        .scope-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 30px 0;
-        }
-        
-        .scope-card {
-            padding: 25px;
-            border: 2px solid #1a1a1a;
-        }
-        
-        .scope-card h4 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .scope-card ul {
-            margin: 0 0 0 20px;
-        }
-        
-        .stakeholder-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-            font-size: 14px;
-        }
-        
-        .stakeholder-table th {
-            background: #1a1a1a;
-            color: white;
-            padding: 15px;
-            text-align: left;
-            font-weight: 400;
-            text-transform: uppercase;
-            font-size: 12px;
-            letter-spacing: 1px;
-        }
-        
-        .stakeholder-table td {
-            padding: 15px;
-            border-bottom: 1px solid #e0e0e0;
-            vertical-align: top;
-        }
-        
-        .stakeholder-table tr:hover {
-            background: #f8f8f8;
-        }
-        
-        .image-container {
-            margin: 40px 0;
-            text-align: center;
-        }
-        
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #e0e0e0;
-            margin: 20px 0;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #1a1a1a;
-            color: white;
-            padding: 15px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-        
-        .back-to-top:hover {
-            background: #333;
-        }
-        
-        @media print {
-            .back-to-top {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 20px 15px;
-            }
-            
-            .header h1 {
-                font-size: 32px;
-            }
-            
-            .toc {
-                padding: 25px;
-            }
-            
-            .section {
-                padding: 20px 0;
-            }
-            
-            .scope-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .stakeholder-table {
-                font-size: 12px;
-            }
-            
-            .stakeholder-table th,
-            .stakeholder-table td {
-                padding: 10px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Breaking Into Tech: My Career Entry Strategy</title>
+  <meta name="description" content="Angel Antonio Contreras‑Reyes — Managing IT Projects (Fall 2025). A structured, accessible plan for entering the IT field: vision, scope, stakeholders, methodology, tools, and weekly status reports." />
+  <style>
+    :root { --bg:#fff; --ink:#1a1a1a; --subtle:#5a5a5a; --border:#d8d8d8; --panel:#f7f7f7; --focus:#005fcc; --ok:#2e7d32; --warn:#ef6c00; }
+    *{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body{margin:0;padding:40px 20px;line-height:1.7;color:var(--ink);font-family:ui-serif,Georgia,"Times New Roman",serif;background:var(--bg)}
+    .container{max-width:980px;margin:0 auto}
+    .skip-link{position:absolute;left:12px;top:12px;padding:8px 12px;background:var(--panel);border:2px solid var(--ink);color:var(--ink);transform:translateY(-150%);transition:transform .2s}
+    .skip-link:focus{transform:translateY(0)}
+    header.hero{text-align:center;padding:56px 20px;border-bottom:3px solid var(--ink);margin-bottom:36px}
+    header.hero h1{font-weight:500;letter-spacing:1.5px;font-size:clamp(28px,4.2vw,52px);margin:0 0 8px}
+    header.hero p{color:var(--subtle);font-style:italic;margin:0}
+    nav.toc{background:var(--panel);border:2px solid var(--ink);padding:28px;margin:24px 0 40px}
+    nav.toc h2{margin:0 0 14px;font-weight:500;font-size:1.4rem}
+    nav.toc ol{margin:0;padding-left:1.2rem}
+    nav.toc a{color:inherit;text-decoration:none}
+    nav.toc a:hover,nav.toc a:focus{text-decoration:underline}
+    .student-info{background:var(--panel);padding:24px;border-left:4px solid var(--ink);margin-bottom:28px}
+    .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px 20px}
+    .info-label{font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--subtle)}
+    main section{margin:32px 0 24px;border-bottom:1px solid var(--border)}
+    main section:last-of-type{border-bottom:0}
+    .section-toggle{width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid var(--border);background:var(--panel);padding:14px 16px;cursor:pointer;font:inherit}
+    .section-toggle:hover{background:#efefef}
+    .section-toggle:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+    .section-title{font-size:clamp(20px,2.6vw,28px);font-weight:500;margin:0}
+    .chev{font-size:1.1rem;transition:transform .2s ease;min-width:22px;text-align:center}
+    .chev.rot{transform:rotate(-90deg)}
+    .section-content{padding:18px 2px 28px}
+    .section-content[hidden]{display:block;max-height:0;overflow:hidden;padding:0;opacity:0;transition:all .25s ease}
+    .section-content:not([hidden]){opacity:1;transition:opacity .25s ease}
+    .scope-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin:18px 0 4px}
+    .scope-card{border:2px solid var(--ink);padding:18px;background:#fff}
+    .scope-card h4{margin:0 0 10px;text-transform:uppercase;letter-spacing:.06em;font-size:.9rem}
+    .stakeholder-table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.95rem}
+    .stakeholder-table caption{text-align:left;font-weight:600;margin:0 0 8px;color:var(--subtle)}
+    .stakeholder-table th,.stakeholder-table td{padding:12px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+    .stakeholder-table th{background:var(--ink);color:#fff;font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:.75rem}
+    .stakeholder-table tr:hover td{background:var(--panel)}
+    .image-container{margin:22px 0;text-align:center}
+    .image-container img{max-width:100%;height:auto;border:1px solid var(--border);margin:14px 0;background:#fff}
+    .status-report{background:var(--panel);border:2px solid var(--ink);padding:20px;margin:18px 0}
+    .report-header{display:flex;gap:12px;align-items:center;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:12px}
+    .report-header h3{margin:0;font-weight:500}
+    .report-status{padding:6px 10px;border-radius:4px;font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+    .status-green{background:var(--ok);color:#fff}
+    .status-at-risk{background:var(--warn);color:#fff}
+    .milestone-table{width:100%;border-collapse:collapse;margin-top:10px}
+    .milestone-table th{text-align:left;border-bottom:2px solid var(--ink);background:#eaeaea;padding:8px}
+    .milestone-table td{border-bottom:1px solid var(--border);padding:8px}
+    .back-to-top{position:fixed;right:24px;bottom:24px;z-index:10;border:none;background:var(--ink);color:#fff;padding:12px 14px;cursor:pointer;letter-spacing:.06em;text-transform:uppercase}
+    .back-to-top:hover{background:#333}
+    .back-to-top:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+    @media print{.back-to-top,.skip-link,nav.toc{display:none!important}.section-content[hidden]{display:block!important;opacity:1!important;max-height:none!important;padding:0!important}.section-toggle{background:transparent;border:none;padding:0}header.hero{margin-bottom:12px;border-bottom:1px solid #000}body{padding:8px}}
+    @media (prefers-reduced-motion:reduce){html:focus-within{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>MY GOAL</h1>
-            <p>Project Charter — Managing IT Projects Course</p>
-        </div>
-        
-        <div class="student-info">
-            <h3>Student Information</h3>
-            <div class="info-grid">
-                <div class="info-item">
-                    <div class="info-label">Student Name</div>
-                    <div class="info-value">Angel Antonio Contreras-Reyes</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Course</div>
-                    <div class="info-value">Managing IT Projects</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Semester</div>
-                    <div class="info-value">Fall 2025</div>
-                </div>
-            </div>
-        </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="container">
+    <header class="hero" role="banner">
+      <h1>Breaking Into Tech: My Career Entry Strategy</h1>
+      <p>Angel Antonio Contreras‑Reyes · Managing IT Projects · Fall 2025</p>
+    </header>
 
-        <div class="toc">
-            <h2>Table of Contents</h2>
-            <ol>
-                <li><a href="#section1">Project Title & Description</a></li>
-                <li><a href="#section2">Vision, Mission & Strategy Alignment</a></li>
-                <li><a href="#section3">Business Case & Justification</a></li>
-                <li><a href="#section4">High-Level Scope</a></li>
-                <li><a href="#section5">Stakeholder Register</a></li>
-                <li><a href="#section6">Methodology Explanation</a></li>
-                <li><a href="#section7">Project Tool</a></li>
-                <li><a href="#section8">Additional Charter Components</a></li>
-            </ol>
-        </div>
+    <section class="student-info" aria-labelledby="student-heading">
+      <h2 id="student-heading">Student Information</h2>
+      <div class="info-grid" role="list">
+        <div role="listitem"><div class="info-label">Student Name</div><div class="info-value">Angel Antonio Contreras‑Reyes</div></div>
+        <div role="listitem"><div class="info-label">Course</div><div class="info-value">Managing IT Projects</div></div>
+        <div role="listitem"><div class="info-label">Semester</div><div class="info-value">Fall 2025</div></div>
+      </div>
+    </section>
 
-        <div class="section" id="section1">
-            <div class="section-header">
-                <h2 class="section-title">1. Project Title & Description</h2>
-            </div>
-            <div class="section-content">
-                <div class="instructions">
-                    <strong>Instructions:</strong>
-                    Replace the placeholder below with your specific project information. Include a clear project name and 2-3 sentences describing what you will deliver.
-                </div>
-                
-                <h3>Project Title: My Goal</h3>
-                <p>I am choosing to pursue an entry-level position in Information Technology. I selected this project because it directly supports my academic and professional development. By optimizing a variety of software tools, I can set a pace where establishing myself in the IT field is possible by the end of the semester.</p>
-            </div>
-        </div>
+    <nav class="toc" aria-label="Table of contents">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#section1">Project Title &amp; Description</a></li>
+        <li><a href="#section2">Vision, Mission &amp; Strategy Alignment</a></li>
+        <li><a href="#section3">Business Case &amp; Justification</a></li>
+        <li><a href="#section4">High‑Level Scope</a></li>
+        <li><a href="#section5">Stakeholder Register</a></li>
+        <li><a href="#section6">Methodology Explanation</a></li>
+        <li><a href="#section7">Project Tool</a></li>
+        <li><a href="#section8">Weekly Status Reports</a></li>
+      </ol>
+    </nav>
 
-        <div class="section" id="section2">
-            <div class="section-header">
-                <h2 class="section-title">2. Vision, Mission & Strategy Alignment</h2>
-            </div>
-            <div class="section-content">
-                <div class="instructions">
-                    <strong>Instructions:</strong>
-                    Explain how this project aligns with your personal mission, vision, and strategic goals. Reference your previous mission/vision/strategy work.
-                </div>
-                
-                <h4>Personal Mission Connection:</h4>
-                <p>Create and refine a plan where deliverables/milestones can be met for landing an entry-level position in the field of Information Technology.</p>
-                
-                <h4>Vision Alignment:</h4>
-                <p>Transitioning into the industry where I can apply and gain knowledge/skills in relation to the IT field. By being in alignment with the stated trajectory all desired facets can be achieved.</p>
-                
-                <h4>Strategic Goal Support:</h4>
-                <p>The field of Tech can prove overwhelming by the large amount of career choice. Curating the development of this personal project will structure the importance of different tasks that need to be accomplished.</p>
-            </div>
+    <main id="main">
+      <section id="section1">
+        <button class="section-toggle" aria-expanded="false" aria-controls="s1"><span class="section-title">1. Project Title &amp; Description</span><span class="chev rot" aria-hidden="true">▼</span></button>
+        <div id="s1" class="section-content" hidden>
+          <h3>Project Title: My Goal</h3>
+          <p>I am choosing to pursue an entry‑level position in Information Technology. I selected this project because it directly supports my academic and professional development. By optimizing a variety of software tools, I can set a pace where establishing myself in the IT field is possible by the end of the semester.</p>
         </div>
+      </section>
 
-        <div class="section" id="section3">
-            <div class="section-header">
-                <h2 class="section-title">3. Business Case & Justification</h2>
-            </div>
-            <div class="section-content">
-                <div class="instructions">
-                    <strong>Instructions:</strong>
-                    Describe how this project will add value to you either professionally or personally. What benefits will you gain?
-                </div>
-                
-                <h4>Professional Value:</h4>
-                <p>Building this project will expose me to new skills and apply them to future endeavors.</p>
-                
-                <h4>Personal Value:</h4>
-                <p>This project will allow me to focus on building my skills in a realistic and achievable way within the given semester.</p>
-                
-                <h4>Learning Outcomes:</h4>
-                <p>I intend to procure technical skills during the course of this project, as well as obtaining project management experience while also gaining more industry knowledge.</p>
-            </div>
+      <section id="section2">
+        <button class="section-toggle" aria-expanded="false" aria-controls="s2"><span class="section-title">2. Vision, Mission &amp; Strategy Alignment</span><span class="chev rot" aria-hidden="true">▼</span></button>
+        <div id="s2" class="section-content" hidden>
+          <h4>Personal Mission Connection</h4>
+          <p>Create and refine a plan where deliverables and milestones can be met for landing an entry‑level position in the field of Information Technology.</p>
+          <h4>Vision Alignment</h4>
+          <p>Transition into the industry where I can apply and grow knowledge and skills in IT. Staying aligned with this trajectory will make the desired outcomes achievable.</p>
+          <h4>Strategic Goal Support</h4>
+          <p>Tech is broad and can feel overwhelming. Curating this personal project provides structure and prioritization for the most impactful tasks.</p>
         </div>
+      </section>
 
-        <div class="section" id="section4">
-            <div class="section-header">
-                <h2 class="section-title">4. High-Level Scope</h2>
-            </div>
-            <div class="section-content">
-                <div class="scope-grid">
-                    <div class="scope-card">
-                        <h4>In Scope for Semester Project</h4>
-                        <ul>
-                            <li>Personal Introduction & Background</li>
-                            <li>Skills Inventory</li>
-                            <li>Resume Development</li>
-                            <li>Coursework & Certifications</li>
-                            <li>Career Goals & Roadmap</li>
-                            <li>Work Samples/Projects Section</li>
-                            <li>Reflection & Growth Summary</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="scope-card">
-                        <h4>Roadmap Items (≤6 Months)</h4>
-                        <ul>
-                            <li>Earn an Entry-Level IT Certification</li>
-                            <li>Build a Personal Website/Portfolio</li>
-                            <li>Expand Project Showcase</li>
-                            <li>Professional Networking Growth</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="scope-card">
-                        <h4>Out of Scope</h4>
-                        <ul>
-                            <li>Advanced Research Work</li>
-                            <li>Developing Full Software Applications</li>
-                            <li>Industry-Level Certification Beyond Entry-Level</li>
-                            <li>Paid Professional Experience</li>
-                            <li>Cross-Disciplinary Projects</li>
-                            <li>Full Business Startup or Entrepreneurial Venture</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+      <section id="section3">
+        <button class="section-toggle" aria-expanded="false" aria-controls="s3"><span class="section-title">3. Business Case &amp; Justification</span><span class="chev rot" aria-hidden="true">▼</span></button>
+        <div id="s3" class="section-content" hidden>
+          <h4>Professional Value</h4>
+          <p>Building this project exposes me to new skills and creates artifacts I can apply to future roles.</p>
+          <h4>Personal Value</h4>
+          <p>It enables realistic, achievable skill‑building within the semester timeline.</p>
+          <h4>Learning Outcomes</h4>
+          <p>I plan to develop technical skills, gain project management experience, and deepen industry knowledge.</p>
         </div>
+      </section>
 
-        <div class="section" id="section5">
-            <div class="section-header">
-                <h2 class="section-title">5. Stakeholder Register</h2>
-            </div>
-            <div class="section-content">
-                <table class="stakeholder-table">
-                    <thead>
-                        <tr>
-                            <th>Stakeholder</th>
-                            <th>Category</th>
-                            <th>Role/Interest</th>
-                            <th>Power</th>
-                            <th>Interest</th>
-                            <th>Engagement Strategy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Potential Employers/Clients</td>
-                            <td>External</td>
-                            <td>To quickly find specific examples of your best work, assess your skills, and understand your brand</td>
-                            <td>High</td>
-                            <td>High</td>
-                            <td>Manage Closely - Ensure the site is user-friendly, showcases relevant projects prominently, and has clear, accessible contact information.</td>
-                        </tr>
-                        <tr>
-                            <td>The Creator</td>
-                            <td>Internal</td>
-                            <td>The project owner and primary driver. You need a platform that effectively represents your brand and professional abilities</td>
-                            <td>High</td>
-                            <td>High</td>
-                            <td>Manage Closely - Define clear objectives for the site. Conduct regular self-reviews and performance tracking.</td>
-                        </tr>
-                        <tr>
-                            <td>Friends and Family</td>
-                            <td>External</td>
-                            <td>Personal network that can provide a "sanity check" and initial feedback on the site's design</td>
-                            <td>Low</td>
-                            <td>High</td>
-                            <td>Keep Informed - Share updates and ask for general feedback on the look, feel, and clarity of the site.</td>
-                        </tr>
-                        <tr>
-                            <td>Recruiters/HR Professionals</td>
-                            <td>External</td>
-                            <td>To efficiently scan your credentials, skills, and experience for potential job fit</td>
-                            <td>High</td>
-                            <td>Medium</td>
-                            <td>Keep Satisfied - Ensure your resume is easily downloadable and that your skills are clearly listed.</td>
-                        </tr>
-                        <tr>
-                            <td>Mentors/Industry Peers</td>
-                            <td>External</td>
-                            <td>To review your work and provide expert feedback on your projects and overall presentation</td>
-                            <td>Medium</td>
-                            <td>Medium</td>
-                            <td>Keep Informed - Send direct links to specific projects for targeted feedback.</td>
-                        </tr>
-                        <tr>
-                            <td>Website Hosting/Platform</td>
-                            <td>Internal</td>
-                            <td>The technical foundation of your site. Need to manage costs and technical requirements</td>
-                            <td>Medium</td>
-                            <td>Low</td>
-                            <td>Keep Satisfied - Research and choose a reliable host or platform that meets your needs.</td>
-                        </tr>
-                        <tr>
-                            <td>The General Public</td>
-                            <td>External</td>
-                            <td>General visitors who may stumble upon your site through search engines or social media</td>
-                            <td>Low</td>
-                            <td>Low</td>
-                            <td>Monitor - Focus on a clean design and clear navigation.</td>
-                        </tr>
-                        <tr>
-                            <td>Educational Institution/Instructor</td>
-                            <td>External</td>
-                            <td>Assess the quality, completeness, and professionalism of the portfolio as part of course evaluation</td>
-                            <td>High</td>
-                            <td>Medium</td>
-                            <td>Keep Satisfied - Follow assignment requirements closely, submit polished deliverables.</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="image-container">
-                    <img src="square.JPG" alt="Power-Interest Grid">
-                    <img src="legitdeliverables.JPG" alt="Deliverables Breakdown">
-                    <img src="budgetestimation.JPG" alt="Budget Estimation">
-                </div>
-            </div>
+      <section id="section4">
+        <button class="section-toggle" aria-expanded="false" aria-controls="s4"><span class="section-title">4. High‑Level Scope</span><span class="chev rot" aria-hidden="true">▼</span></button>
+        <div id="s4" class="section-content" hidden>
+          <div class="scope-grid">
+            <div class="scope-card"><h4>In Scope for Semester Project</h4><ul><li>Personal Introduction &amp; Background</li><li>Skills Inventory</li><li>Resume Development</li><li>Coursework &amp; Certifications</li><li>Career Goals &amp; Roadmap</li><li>Work Samples/Projects Section</li><li>Reflection &amp; Growth Summary</li></ul></div>
+            <div class="scope-card"><h4>Roadmap Items (≤ 6 Months)</h4><ul><li>Earn an Entry‑Level IT Certification</li><li>Build a Personal Website/Portfolio</li><li>Expand Project Showcase</li><li>Professional Networking Growth</li></ul></div>
+            <div class="scope-card"><h4>Out of Scope</h4><ul><li>Advanced Research Work</li><li>Developing Full Software Applications</li><li>Industry‑Level Certification Beyond Entry‑Level</li><li>Paid Professional Experience</li><li>Cross‑Disciplinary Projects</li><li>Full Business Startup or Entrepreneurial Venture</li></ul></div>
+          </div>
         </div>
+      </section>
 
-        <div class="section" id="section6">
-            <div class="section-header">
-                <h2 class="section-title">6. Methodology Explanation</h2>
-            </div>
-            <div class="section-content">
-                <div class="instructions">
-                    <strong>Instructions:</strong>
-                    Select either predictive, hybrid-incremental, hybrid-iterative, or agile. Justify your choice with 3-4 reasons specific to your project.
-                </div>
-                
-                <h4>Hybrid Approach</h4>
-                <p>I'll be going with a Hybrid - Iterative approach. It lets me stay on track and prioritize deliverables, as well as adapting flexibly while moving toward a fulfilling promised vision statement.</p>
-                
-                <div class="image-container">
-                    <img src="diagram.JPG" alt="Methodology Diagram">
-                </div>
-            </div>
+      <section id="section5">
+        <button class="section-toggle" aria-expanded="false" aria-controls="s5"><span class="section-title">5. Stakeholder Register</span><span class="chev rot" aria-hidden="true">▼</span></button>
+        <div id="s5" class="section-content" hidden>
+          <table class="stakeholder-table"><caption>Key stakeholders with category, power/interest, and engagement strategy.</caption><thead><tr><th scope="col">Stakeholder</th><th scope="col">Category</th><th scope="col">Role/Interest</th><th scope="col">Power</th><th scope="col">Interest</th><th scope="col">Engagement Strategy</th></tr></thead><tbody><tr><td>Potential Employers/Clients</td><td>External</td><td>Find examples of best work, assess skills, and understand brand</td><td>High</td><td>High</td><td>Manage closely — user‑friendly site, relevant projects prominent, clear contact info.</td></tr><tr><td>The Creator</td><td>Internal</td><td>Project owner; needs platform representing brand and abilities</td><td>High</td><td>High</td><td>Manage closely — set objectives, self‑reviews, track performance.</td></tr><tr><td>Friends and Family</td><td>External</td><td>Provide initial feedback on design and clarity</td><td>Low</td><td>High</td><td>Keep informed — share updates and request general feedback.</td></tr><tr><td>Recruiters/HR Professionals</td><td>External</td><td>Scan credentials and skills for job fit</td><td>High</td><td>Medium</td><td>Keep satisfied — downloadable resume, clear skills list.</td></tr><tr><td>Mentors/Industry Peers</td><td>External</td><td>Review work and provide expert feedback</td><td>Medium</td><td>Medium</td><td>Keep informed — send direct links for targeted feedback.</td></tr><tr><td>Website Hosting/Platform</td><td>Internal</td><td>Technical foundation of site; balance cost and requirements</td><td>Medium</td><td>Low</td><td>Keep satisfied — pick reliable platform that fits needs.</td></tr><tr><td>The General Public</td><td>External</td><td>Visitors via search or social</td><td>Low</td><td>Low</td><td>Monitor — clear navigation and clean design.</td></tr><tr><td>Educational Institution/Instructor</td><td>External</td><td>Evaluate quality and professionalism for course</td><td>High</td><td>Medium</td><td>Keep satisfied — follow requirements and submit polished work.</td></tr></tbody></table>
+          <div class="image-container"><figure><img src="square.JPG" alt="Power‑interest grid diagram" loading="lazy" /><figcaption>Power‑Interest Grid</figcaption></figure><figure><img src="deliv.JPG" alt="Deliverables breakdown diagram" loading="lazy" /><figcaption>Deliverables Breakdown</figcaption></figure><figure><img src="supermoney.JPG" alt="Budget estimation graphic" loading="lazy" /><figcaption>Budget Estimation</figcaption></figure></div>
         </div>
+      </section>
 
-        <div class="section" id="section7">
-            <div class="section-header">
-                <h2 class="section-title">7. Project Tool</h2>
-            </div>
-            <div class="section-content">
-                <div class="instructions">
-                    <strong>Instructions:</strong>
-                    Selection Explanation
-                </div>
-                
-                <h4>Microsoft Planner</h4>
-                <p>I went with Microsoft Planner. Visually the tool has a great aesthetic, with a user-friendly interface to boot. I particularly enjoy the automated variety of view-boards, my favorite being the charts tabs. There is an option given to attach URL links for assignments which isn't ideal, but seeing as I'll be using GitHub as a repository convenience won't be an issue.</p>
-                
-                <div class="image-container">
-                    <img src="grid.JPG" alt="Microsoft Planner Grid View">
-                </div>
-            </div>
+      <section id="section6">
+        <button class="section-toggle" aria-expanded="false" aria-controls="s6"><span class="section-title">6. Methodology Explanation</span><span class="chev rot" aria-hidden="true">▼</span></button>
+        <div id="s6" class="section-content" hidden>
+          <h4>Hybrid Approach</h4>
+          <p>I will use a Hybrid‑Iterative approach. It keeps delivery on track while allowing adaptability toward the project vision.</p>
+          <div class="image-container"><figure><img src="hybridflow.JPG" alt="Hybrid methodology flow diagram" loading="lazy" /><figcaption>Methodology Diagram</figcaption></figure></div>
         </div>
+      </section>
 
-        <div class="section" id="section8">
-            <div class="section-header">
-                <h2 class="section-title">8. Additional Charter Components</h2>
-            </div>
-            <div class="section-content">
-                <div class="instructions">
-                    <strong>Note for Future Updates:</strong>
-                    This charter will be expanded throughout the semester as we cover additional project management components including:
-                </div>
-                <ul>
-                    <li>Project Methodology Selection</li>
-                    <li>Deliverables & Definition of Done</li>
-                    <li>High-Level Timeline & Milestones</li>
-                    <li>Execution Plan Overview</li>
-                    <li>Risk Register</li>
-                    <li>Acceptance Criteria</li>
-                    <li>Project Manager Authority & Approvals</li>
-                </ul>
-            </div>
+      <section id="section7">
+        <button class="section-toggle" aria-expanded="false" aria-controls="s7"><span class="section-title">7. Project Tool</span><span class="chev rot" aria-hidden="true">▼</span></button>
+        <div id="s7" class="section-content" hidden>
+          <h4>Microsoft Planner</h4>
+          <p>I chose Microsoft Planner for its clear visuals and user‑friendly interface. I like its different board views, especially the charts tab. It supports attaching URLs to tasks; I will store source files in GitHub.</p>
+          <div class="image-container"><figure><img src="grid.JPG" alt="Microsoft Planner grid view screenshot" loading="lazy" /><figcaption>Microsoft Planner — Grid View</figcaption></figure><figure><img src="board.JPG" alt="Microsoft Planner board view screenshot" loading="lazy" /><figcaption>Microsoft Planner — Board View</figcaption></figure></div>
         </div>
-    </div>
+      </section>
 
-    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑ Top</button>
+      <section id="section8">
+        <button class="section-toggle" aria-expanded="false" aria-controls="s8"><span class="section-title">8. Weekly Status Reports</span><span class="chev rot" aria-hidden="true">▼</span></button>
+        <div id="s8" class="section-content" hidden>
+          <article class="status-report"><div class="report-header"><h3>Week 7 — <time datetime="2025-10-03">Oct 3, 2025</time></h3><span class="report-status status-green">On Track</span></div><div class="report-content"><h4>Accomplishments This Week</h4><ul><li>Completed project charter initial draft</li><li>Identified key stakeholders</li><li>Selected Microsoft Planner as project management tool</li></ul><h4>Work Planned for Next Week</h4><ul><li>Deliverable 1</li><li>Deliverable 2</li></ul><h4>Issues/Blockers</h4><ul><li>None at this time</li></ul><h4>Charter Updates</h4><p>Initial charter created with all required sections.</p></div></article>
+          <article class="status-report"><div class="report-header"><h3>Week 9 — <time datetime="2025-10-19">Oct 19, 2025</time></h3><span class="report-status status-at-risk">At Risk</span></div><div class="report-content"><h4>Executive Summary</h4><p>Progress continues, but pace needs to increase. Other course projects were prioritized last week. Upcoming availability should allow this project to become the focus.</p><h4>Accomplishments This Week</h4><ul><li>Implemented web format</li><li>Received a peer review on LinkedIn</li><li>Earned a certificate</li></ul><h4>Work Planned for Next Week</h4><ul><li>Job submissions</li><li>Request additional LinkedIn reviews</li><li>Finish team project</li></ul><h4>Upcoming Milestones</h4><table class="milestone-table"><thead><tr><th>Milestone</th><th>Target Date</th><th>Status</th></tr></thead><tbody><tr><td>Portfolio</td><td><time datetime="2025-10-18">10/18/2025</time></td><td>On Track</td></tr><tr><td>LinkedIn</td><td><time datetime="2025-10-18">10/18/2025</time></td><td>On Track</td></tr><tr><td>Job Tracker</td><td><time datetime="2025-10-18">10/18/2025</time></td><td>On Track</td></tr></tbody></table><h4>Issues &amp; Risks / Mitigations</h4><p>No issues or risks identified for this period.</p><h4>Changes Since Last Report</h4><p>No changes since the last report.</p></div></article>
+                  <article class="status-report"><div class="report-header"><h3>Week 10 — <time datetime="2025-10-25">Oct 25, 2025</time></h3><span class="report-status status-green">On Track</span></div><div class="report-content"><h4>Executive Summary</h4><p>The project is back on track, with the website portion making strides in its design. I gamified the use of Claude AI by only working on the web‑building of the project until a specified time; those sessions help me crank out focused UI progress.</p><h4>Accomplishments This Week</h4><ul><li>Website</li><li>LinkedIn</li><li>Discipline</li></ul><h4>Work Planned for Next Week</h4><ul><li>LinkedIn feedback</li><li>Design &amp; UI</li><li>Project Planner</li></ul><h4>Upcoming Milestones</h4><table class="milestone-table"><thead><tr><th>Milestone</th><th>Target Date</th><th>Status</th></tr></thead><tbody><tr><td>Portfolio</td><td><time datetime="2025-10-24">10/24/2025</time></td><td>On Track</td></tr><tr><td>Job Tracker</td><td><time datetime="2025-10-24">10/24/2025</time></td><td>At Risk</td></tr><tr><td>LinkedIn</td><td><time datetime="2025-10-24">10/24/2025</time></td><td>On Track</td></tr></tbody></table><h4>Issues &amp; Risks / Mitigations</h4><p><strong>Job Tracker — Medium.</strong> Mitigation: begin reaching out to companies.</p><h4>Changes Since Last Report</h4><p>Change #1 (2025‑10‑25): The web‑building portion was falling behind; after checking in with instructor Maria Espinoza, the project is now back on track.</p></div></article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <button class="back-to-top" type="button" aria-label="Back to top" title="Back to top">↑ Top</button>
+
+  <script>
+    const saveKey = (id) => `section-open::${id}`;
+    function setExpanded(btn, expanded) {
+      const content = document.getElementById(btn.getAttribute('aria-controls'));
+      btn.setAttribute('aria-expanded', String(expanded));
+      const chev = btn.querySelector('.chev');
+      if (expanded) {
+        content.removeAttribute('hidden');
+        chev?.classList.remove('rot');
+      } else {
+        content.setAttribute('hidden', '');
+        chev?.classList.add('rot');
+      }
+      try { localStorage.setItem(saveKey(content.id), expanded ? '1' : '0'); } catch {}
+    }
+
+    // NEW: always-expand behavior — clicks only open, never close
+    function expandOnly(evt) {
+      const btn = evt.currentTarget;
+      setExpanded(btn, true);
+    }
+
+    document.querySelectorAll('.section-toggle').forEach((btn) => {
+      btn.addEventListener('click', expandOnly);
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); expandOnly({ currentTarget: btn }); }
+      });
+      const contentId = btn.getAttribute('aria-controls');
+      const saved = (() => { try { return localStorage.getItem(saveKey(contentId)); } catch { return null; } })();
+      if (saved === '1') setExpanded(btn, true);
+    });
+
+    // Open target section from hash navigation
+    function openHashTarget() {
+      if (location.hash) {
+        const section = document.querySelector(location.hash);
+        const btn = section?.querySelector('.section-toggle');
+        if (btn) setExpanded(btn, true);
+      }
+    }
+    window.addEventListener('hashchange', openHashTarget);
+    openHashTarget();
+
+    // Back to top
+    document.querySelector('.back-to-top')?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
