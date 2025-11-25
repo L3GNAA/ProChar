@@ -144,6 +144,9 @@
     .star-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
     .star-card{border:2px solid var(--ink);padding:16px;background:#fff}
     .star-pill{display:inline-block;font-size:12px;padding:2px 8px;border:1px solid var(--ink);margin-right:6px}
+    .star-arrow{display:inline-block;transition:transform .3s ease;margin-left:8px}
+    .star-arrow.open{transform:rotate(180deg)}
+    .star-story-content{margin-top:16px;padding-top:16px;border-top:1px solid #e0e0e0}
 
     @media (prefers-reduced-motion:reduce){
       *{transition:none!important;animation:none!important}
@@ -199,7 +202,6 @@
         <li><a href="#section6">Methodology Explanation</a></li>
         <li><a href="#section7">Project Tool</a></li>
         <li><a href="#section8">Weekly Status Reports</a></li>
-        <!-- Removed: <li><a href="#charter">📄 Approved Project Charter</a></li> -->
         <li><a href="#status">📊 Project Status</a></li>
         <li><a href="#closure">📋 Project Closure Documents</a></li>
         <li><a href="#interviews">🎥 Stakeholder Interviews</a></li>
@@ -453,6 +455,16 @@
             </ul>
           </div>
           <img src="mplanner.JPG" alt="Microsoft Planner Overview" loading="lazy" />
+        </div>
+
+        <!-- Pair 6 (New Grid View) -->
+        <div class="task-image-pair">
+          <div class="completion-box">
+            <h4>Tasks</h4>
+            <ul>
+            </ul>
+          </div>
+          <img src="Week13ProjectToolScreenshot.JPG" alt="Microsoft Planner Grid View" loading="lazy" />
         </div>
       </div>
     </section>
@@ -739,46 +751,60 @@
       <div class="section-content hidden" id="star-content">
         <p class="meta">Five required stories: 2 from presentations, 3 from PMI Principle prompts. Optionally add 1 risk/issue story (does not count toward 5).</p>
         <div class="star-grid">
-          <div class="star-card">
-            <div class="star-pill">Presentation</div>
-            <h4>STAR #1 — Title</h4>
-            <p><strong>Situation:</strong> …</p>
-            <p><strong>Task:</strong> …</p>
-            <p><strong>Action:</strong> …</p>
-            <p><strong>Result:</strong> …</p>
+        <div class="star-card">
+          <div class="star-pill">Presentation</div>
+          <h4 style="cursor:pointer;user-select:none;" onclick="toggleStarStory(this)">STAR #1 — CSULA Project Management Team Presentation <span class="star-arrow">▼</span></h4>
+          <div class="star-story-content" style="display:none;">
+            <p><strong>Situation:</strong> During a recent Project Management course at CSULA, I participated in a small group of five classmates to complete a full project within a two-week time frame. The project required us to apply project management principles in real time, including planning, scheduling, and risk assessment. The short timeline created pressure on coordination and accountability among team members.</p>
+            <p><strong>Task:</strong> My responsibility was to complete and submit a key portion of the deliverable early in the project. However, as the deadline approached, the team had not maintained consistent progress. The major risk was time — our lack of synchronization threatened the quality and timely completion of the final presentation.</p>
+            <p><strong>Action:</strong> I communicated with the team to clarify remaining tasks and deadlines. We collectively decided to extend our working sessions, dividing unfinished portions evenly and supporting each other. I checked in regularly with teammates to confirm updates and offer help. Though we worked late into the night, we remained organized and calm under pressure.</p>
+            <p><strong>Result:</strong> The project was submitted successfully and well received. I learned an invaluable lesson about maintaining team-wide transparency and accountability. In future projects, I will emphasize consistent communication, even after my part is complete, to reduce last-minute risk and stress.</p>
           </div>
-          <div class="star-card">
-            <div class="star-pill">Presentation</div>
-            <h4>STAR #2 — Title</h4>
-            <p><strong>Situation:</strong> …</p>
-            <p><strong>Task:</strong> …</p>
-            <p><strong>Action:</strong> …</p>
-            <p><strong>Result:</strong> …</p>
+        </div>
+
+        <div class="star-card">
+          <div class="star-pill">Presentation</div>
+          <h4 style="cursor:pointer;user-select:none;" onclick="toggleStarStory(this)">STAR #2 — General Leadership Project Presentation <span class="star-arrow">▼</span></h4>
+          <div class="star-story-content" style="display:none;">
+            <p><strong>Situation:</strong> In the same Project Management course at CSULA, my group was assigned a project on General Leadership. As a team of five, we were responsible for researching, designing, and delivering a presentation demonstrating key leadership concepts. I served as the Presentation Designer and took charge of creating a visually engaging, interactive presentation using Nearpod.</p>
+            <p><strong>Task:</strong> While I had used Nearpod successfully for years, the platform had recently changed, placing many of its best features behind a paywall. This unexpected limitation occurred midway through the project, disrupting our original plan for interactivity. Additionally, on presentation day, the QR code for audience access had expired, creating a setback right before we began.</p>
+            <p><strong>Action:</strong> To adapt, I quickly restructured the presentation using features still available in the free version. I integrated the team's submitted content manually and ensured our slides remained consistent and clear. I communicated regularly with all team members, keeping everyone informed and confident. During the presentation, I helped guide the audience to access the session manually when the QR code failed.</p>
+            <p><strong>Result:</strong> Despite the challenges, the presentation was a success. Our classmates were engaged and participated actively in the interactive activities. I learned the importance of contingency planning for digital tools and verifying technical elements before presenting. In future projects, I plan to test every resource ahead of time and prepare alternative access options to ensure seamless delivery.</p>
           </div>
-          <div class="star-card">
-            <div class="star-pill">PMI Principle</div>
-            <h4>STAR #3 — Title</h4>
-            <p><strong>Situation:</strong> …</p>
-            <p><strong>Task:</strong> …</p>
-            <p><strong>Action:</strong> …</p>
-            <p><strong>Result:</strong> …</p>
+        </div>
+
+        <div class="star-card">
+          <div class="star-pill">PMI Principle</div>
+          <h4 style="cursor:pointer;user-select:none;" onclick="toggleStarStory(this)">STAR #3 — Team Collaboration & Communication <span class="star-arrow">▼</span></h4>
+          <div class="star-story-content" style="display:none;">
+            <p><strong>Situation:</strong> During a collaborative project in my Project Management course at CSULA, I worked in a five-member group responsible for developing a comprehensive presentation under a strict timeline. Each of us was assigned specific deliverables, but as the deadline approached, our progress varied significantly. It became clear that, while each individual was capable, we needed stronger team collaboration to bring our efforts together effectively.</p>
+            <p><strong>Task:</strong> My responsibility was not only to complete my assigned section but also to contribute to fostering a more connected team environment. We needed to re-establish clear communication channels and ensure that each member's progress supported the group's shared goals.</p>
+            <p><strong>Action:</strong> I initiated a team check-in session to discuss challenges openly and reassign smaller, manageable tasks based on each person's capacity. We created a shared document for real-time updates, allowing everyone to see progress and deadlines simultaneously. I also encouraged consistent communication through group chat and offered help to those struggling with their sections.</p>
+            <p><strong>Result:</strong> Our renewed collaboration helped us complete the project on time and improved the group's morale. The professor specifically praised our ability to coordinate and communicate effectively under pressure. This experience reinforced the importance of fostering teamwork, not just for efficiency but also for maintaining trust and accountability. I learned that successful project outcomes depend heavily on creating a supportive team culture where everyone feels included and valued.</p>
           </div>
-          <div class="star-card">
-            <div class="star-pill">PMI Principle</div>
-            <h4>STAR #4 — Title</h4>
-            <p><strong>Situation:</strong> …</p>
-            <p><strong>Task:</strong> …</p>
-            <p><strong>Action:</strong> …</p>
-            <p><strong>Result:</strong> …</p>
+        </div>
+
+        <div class="star-card">
+          <div class="star-pill">PMI Principle</div>
+          <h4 style="cursor:pointer;user-select:none;" onclick="toggleStarStory(this)">STAR #4 — Risk Identification & Mitigation <span class="star-arrow">▼</span></h4>
+          <div class="star-story-content" style="display:none;">
+            <p><strong>Situation:</strong> In my Project Management course at CSULA, our group of five was assigned a leadership-focused project requiring a detailed presentation within a tight two-week period. From the start, I recognized several potential risks: time constraints, uneven workload distribution, and reliance on Nearpod, a third-party presentation platform. I discovered that many of its best features were now locked behind a paywall, threatening our original project plan.</p>
+            <p><strong>Task:</strong> As the Presentation Designer, I was responsible for ensuring our presentation was engaging, accessible, and delivered smoothly. When the paywall changes disrupted our initial design, I needed to find a quick alternative solution to preserve interactivity and ensure the final product met our expectations and deadlines.</p>
+            <p><strong>Action:</strong> I immediately assessed the risks by identifying which features were no longer available and how that would affect our planned activities. To mitigate the issue, I restructured the slides to focus on free features that still allowed real-time engagement. I informed the team of the limitations, proposed adjustments, and coordinated updates so everyone could adapt their content accordingly. Before the presentation, I also created manual login instructions as a contingency plan in case the QR access failed—which ultimately proved helpful when the QR code expired during the live session.</p>
+            <p><strong>Result:</strong> Despite these challenges, our presentation was completed successfully, and the audience actively participated by logging in manually. This experience highlighted how crucial it is to anticipate risks early and prepare contingencies, even for familiar tools. I now approach every project with a proactive mindset—identifying, assessing, and addressing potential risks before they escalate into last-minute problems.</p>
           </div>
-          <div class="star-card">
-            <div class="star-pill">PMI Principle</div>
-            <h4>STAR #5 — Title</h4>
-            <p><strong>Situation:</strong> …</p>
-            <p><strong>Task:</strong> …</p>
-            <p><strong>Action:</strong> …</p>
-            <p><strong>Result:</strong> …</p>
+        </div>
+
+        <div class="star-card">
+          <div class="star-pill">PMI Principle</div>
+          <h4 style="cursor:pointer;user-select:none;" onclick="toggleStarStory(this)">STAR #5 — Adaptability & Resilience Under Pressure <span class="star-arrow">▼</span></h4>
+          <div class="star-story-content" style="display:none;">
+            <p><strong>Situation:</strong> While completing a project on General Leadership in my Project Management course at CSULA, I served as the Presentation Designer for a five-person team. We had chosen to use Nearpod, an interactive web platform I was familiar with, to make our presentation more engaging. However, midway through our project, Nearpod introduced major changes to its free plan, removing many of the interactive features we originally built our design around. This unexpected limitation forced me to completely rethink our approach with only a few days left before the presentation.</p>
+            <p><strong>Task:</strong> My main responsibility was to ensure the presentation remained effective and interactive despite the sudden loss of premium tools. I needed to quickly adapt to these changes, communicate adjustments to my teammates, and deliver a product that would still meet our course objectives and keep the audience engaged.</p>
+            <p><strong>Action:</strong> Rather than panicking, I focused on what resources were still available. I restructured the slides using free, accessible Nearpod tools and added new elements—like embedded questions and short polls—to preserve interactivity. I coordinated with my teammates to make sure their materials fit smoothly into the revised format. On presentation day, when our QR code unexpectedly expired, I guided the audience through manual access instructions in real time so participation could continue uninterrupted.</p>
+            <p><strong>Result:</strong> Our presentation was well-received, and the audience remained actively involved despite the setbacks. This experience strengthened my adaptability and resilience as a project contributor. I learned that technical or procedural challenges are inevitable, but maintaining composure, flexibility, and problem-solving focus allows teams to deliver strong results under pressure.</p>
           </div>
+        </div>
         </div>
         <p class="meta">Optional: <span class="star-pill">Risk/Issue</span> story may be added as a sixth card.</p>
       </div>
@@ -796,6 +822,18 @@
       icon.classList.toggle('closed');
       icon.classList.toggle('open');
       header.setAttribute('aria-expanded', String(!expanded));
+    }
+    
+    function toggleStarStory(header){
+      const content = header.nextElementSibling;
+      const arrow = header.querySelector('.star-arrow');
+      if(content.style.display === 'none' || content.style.display === ''){
+        content.style.display = 'block';
+        arrow.classList.add('open');
+      } else {
+        content.style.display = 'none';
+        arrow.classList.remove('open');
+      }
     }
   </script>
 </body>
